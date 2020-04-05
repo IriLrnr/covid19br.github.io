@@ -6,6 +6,15 @@ source('prepara_dados.R')
 source('ajuste_projecao_exponencial.R')
 source('plots.R')
 
+
+ncasos.completa.d <- data.frame(ncasos.completa)
+ncasos.completa.d <- rownames_to_column(ncasos.completa.d, var = "data")
+## Como transformar o nome da linha em uma coluna a mais com regex???
+## dar append na data
+colnames(ncasos.completa.d) = c("Data", "casos", "predito", "ic.low", "ic.upp")
+## Escreve o csv
+write.csv(ncasos.completa.D, file = "/path/teste.csv", sep = ";", row.names = FALSE)
+
 sigla.estado <- c(AC="Acre", AL="Alagoas", AP="Amapá", AM="Amazonas",
                   BA="Bahia", CE="Ceará", DF="Distrito Federal", ES="Espírito Santo",
                   GO="Goiás", MA="Maranhão", MT="Mato Grosso",
